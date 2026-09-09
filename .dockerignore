@@ -1,0 +1,22 @@
+# ============================================================
+# Docker 构建上下文 = 仓库根目录，忽略无关文件
+# ============================================================
+.git
+.github
+docs
+*.md
+.env
+.devtools
+
+# 后端
+backend/target
+
+# 前端
+frontend/node_modules
+frontend/dist
+
+# IDE / 系统
+.idea
+.vscode
+*.iml
+.DS_Store
