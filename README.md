@@ -155,7 +155,7 @@ mvn test          # 不需要 Docker / 数据库
 | `DB_USERNAME` / `DB_PASSWORD` | `taskflow` | 数据库账号（compose 里同 `POSTGRES_*`） |
 | `JWT_SECRET` | 开发默认值 | **生产必须覆盖**，≥32 字节 |
 | `JWT_EXPIRE_HOURS` | `24` | token 有效期 |
-| `CORS_ALLOWED_ORIGINS` | `http://localhost:5173` | 允许的前端来源 |
+| `CORS_ALLOWED_ORIGINS` | `http://localhost:8081,http://localhost:5173` | 允许跨域直连后端的来源（多个用逗号分隔）。**服务器部署时请改为你的公网地址**，如 `http://你的IP:8081`；浏览器发请求必带 `Origin`，若不在白名单会返回 403 `Invalid CORS request` |
 | `SEED_DEMO_DATA` | `true` | 首次启动播种演示账号与示例待办 |
 
 ## 九、常见问题
@@ -163,6 +163,7 @@ mvn test          # 不需要 Docker / 数据库
 - **5432 端口被占**：`docker compose up -d db` 前把 compose 里 `DB_PORT` 改成如 `5433:5432`，后端 `DB_URL` 相应调整。
 - **数据库连不上**：确认容器健康（`docker compose ps`）；后端在数据库健康后才启动，偶发需 `docker compose restart backend`。
 - **改 JWT 密钥后老 token 失效**：正常现象，重新登录即可。
+- **注册/登录报 403 `Invalid CORS request`**：浏览器请求带的 `Origin` 不在 `CORS_ALLOWED_ORIGINS` 白名单（curl 不带 Origin 所以测不出来）。服务器部署时把该变量设为站点公网地址后 `docker compose up -d backend`。
 - **IDEA 直接跑后端**：Run Configuration 的 Active Profiles 填 `h2` 即可零依赖启动。
 
 ## 十、把它变成你自己的项目
