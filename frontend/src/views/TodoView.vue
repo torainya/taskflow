@@ -165,19 +165,23 @@ onMounted(load)
 
     <!-- 统计卡片 -->
     <div class="stats-row">
-      <div class="stat-card">
+      <div class="stat-card glass">
+        <span class="stat-dot" style="background: #f59e0b"></span>
         <div class="stat-num">{{ stats.todo }}</div>
         <div class="stat-label">待开始</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card glass">
+        <span class="stat-dot" style="background: #3d7bff"></span>
         <div class="stat-num">{{ stats.inProgress }}</div>
         <div class="stat-label">进行中</div>
       </div>
-      <div class="stat-card done">
+      <div class="stat-card glass">
+        <span class="stat-dot" style="background: #10b981"></span>
         <div class="stat-num">{{ stats.done }}</div>
         <div class="stat-label">已完成</div>
       </div>
-      <div class="stat-card total">
+      <div class="stat-card glass">
+        <span class="stat-dot" style="background: #8b5cf6"></span>
         <div class="stat-num">{{ stats.total }}</div>
         <div class="stat-label">总计</div>
       </div>
@@ -308,18 +312,20 @@ onMounted(load)
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .page-head h2 {
   margin: 0 0 4px;
-  font-size: 22px;
-  color: #111827;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #101223;
 }
 
 .page-sub {
   margin: 0;
-  color: #9ca3af;
+  color: #7a7f93;
   font-size: 13px;
 }
 
@@ -331,55 +337,79 @@ onMounted(load)
 }
 
 .stat-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 16px 20px;
-  border-left: 4px solid #94a3b8;
+  border-radius: 20px;
+  padding: 18px 22px;
+  transition: transform 0.18s ease, box-shadow 0.22s ease;
 }
 
-.stat-card.done {
-  border-left-color: #22c55e;
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(60, 64, 120, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-.stat-card.total {
-  border-left-color: #2563eb;
+.stat-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5);
 }
 
 .stat-num {
-  font-size: 26px;
+  margin-top: 8px;
+  font-size: 30px;
   font-weight: 700;
-  color: #111827;
+  font-variant-numeric: tabular-nums;
+  color: #101223;
 }
 
 .stat-label {
   margin-top: 2px;
   font-size: 12px;
-  color: #6b7280;
+  color: #7a7f93;
 }
 
+/* 玻璃工具条 */
 .toolbar {
   display: flex;
   gap: 10px;
+  align-items: center;
   margin-bottom: 14px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 6px 24px rgba(60, 64, 120, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .table-card {
-  border-radius: 10px;
-  border-color: #eef0f4;
+  border-radius: 24px;
+  padding: 6px 8px 4px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 32px rgba(60, 64, 120, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.table-card :deep(.el-card__body) {
+  padding: 12px 16px 16px;
 }
 
 .done-title {
   text-decoration: line-through;
-  color: #9ca3af;
+  color: #a3a8b8;
 }
 
 .desc {
   font-size: 13px;
-  color: #6b7280;
+  color: #6b7080;
 }
 
 .empty-desc {
-  color: #d1d5db;
+  color: #c3c7d4;
 }
 
 .status-select {

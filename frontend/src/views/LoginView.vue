@@ -66,7 +66,12 @@ function fillDemo() {
 
 <template>
   <div class="login-page">
-    <div class="login-card">
+    <div class="login-card glass">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 12.5l5 5L20 6.5" />
+        </svg>
+      </div>
       <h1 class="title">TaskFlow</h1>
       <p class="subtitle">任务待办 · 全生命周期示例项目</p>
 
@@ -118,57 +123,117 @@ function fillDemo() {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 50%, #fdf2f8 100%);
+  padding: 24px;
 }
 
 .login-card {
-  width: 400px;
-  padding: 40px 36px 28px;
-  background: #fff;
+  width: 420px;
+  max-width: 100%;
+  padding: 44px 40px 30px;
+  border-radius: 28px;
+}
+
+.brand-mark {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto;
   border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(37, 99, 235, 0.08);
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #6aa2ff 0%, #2f6bff 100%);
+  box-shadow: 0 8px 20px rgba(47, 107, 255, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
 .title {
-  margin: 0;
+  margin: 16px 0 0;
   text-align: center;
   font-size: 28px;
-  color: #111827;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #101223;
 }
 
 .subtitle {
   margin: 6px 0 0;
   text-align: center;
-  color: #9ca3af;
+  color: #7a7f93;
   font-size: 13px;
 }
 
+/* iOS 分段控件样式 */
 .tabs {
-  margin: 18px 0 4px;
+  margin: 22px 0 6px;
+}
+
+.tabs :deep(.el-tabs__nav-wrap::after) {
+  display: none;
+}
+
+.tabs :deep(.el-tabs__nav-scroll) {
+  display: flex;
+  justify-content: center;
+}
+
+.tabs :deep(.el-tabs__nav) {
+  float: none;
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  padding: 4px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.tabs :deep(.el-tabs__item) {
+  border-radius: 999px;
+  padding: 0 28px;
+  height: 34px;
+  line-height: 34px;
+  color: #5b6072;
+  transition: all 0.2s ease;
+}
+
+.tabs :deep(.el-tabs__item.is-active) {
+  background: #fff;
+  color: #2f6bff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(60, 64, 120, 0.16);
+}
+
+.tabs :deep(.el-tabs__active-bar) {
+  display: none;
 }
 
 .submit-btn {
   width: 100%;
-  margin-top: 6px;
+  margin-top: 8px;
+  height: 44px;
+  font-size: 15px;
+  letter-spacing: 2px;
 }
 
 .hint {
-  margin-top: 18px;
+  margin-top: 20px;
   text-align: center;
   font-size: 12px;
-  color: #9ca3af;
+  color: #7a7f93;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 14px;
+  padding: 10px 12px;
 }
 
 .hint code {
-  background: #f3f4f6;
-  padding: 1px 6px;
-  border-radius: 4px;
-  color: #4b5563;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1px 8px;
+  border-radius: 6px;
+  color: #3d4152;
 }
 
 .hint-action {
   margin-left: 8px;
-  color: #2563eb;
+  color: #2f6bff;
+  font-weight: 500;
   cursor: pointer;
 }
 
